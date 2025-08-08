@@ -1,0 +1,30 @@
+<% content_for :title, "Admin Dashboard" %>
+
+<div class="space-y-6">
+  <h1 class="font-bold text-3xl">Admin Dashboard</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="p-4 rounded border">
+      <div class="text-sm text-gray-500">Total Posts</div>
+      <div class="text-2xl font-semibold"><%= @posts_count %></div>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="font-semibold text-xl mb-2">Recent Posts</h2>
+    <ul class="list-disc ml-6">
+      <% @recent_posts.each do |post| %>
+        <li>
+          <%= link_to post.title.presence || "(no title)", [:admin, post] %>
+          <span class="text-xs text-gray-500 ml-2"><%= l(post.created_at, format: :short) %></span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="mt-4">
+    <%= link_to "Manage Posts", admin_posts_path, class: "inline-block rounded px-3.5 py-2.5 bg-blue-600 text-white" %>
+  </div>
+</div>
+
+

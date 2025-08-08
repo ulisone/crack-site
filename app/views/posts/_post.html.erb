@@ -1,0 +1,23 @@
+<div id="<%= dom_id post %>" class="w-full sm:w-auto my-5 space-y-5">
+  <div>
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= post.title %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Content:</strong>
+    <%= post.content %>
+  </div>
+  <% if post.attachments.attached? %>
+    <div>
+      <strong class="block font-medium mb-1">Attachments:</strong>
+      <ul class="list-disc ml-6 space-y-1">
+        <% post.attachments.each do |file| %>
+          <li>
+            <%= link_to file.filename, rails_blob_path(file, disposition: "attachment") %>
+            <%= button_to "Remove", remove_attachment_post_path(post, attachment_id: file.id), method: :delete, class: "ml-2 text-sm text-red-600", form: { data: { turbo_confirm: "Remove this file?" } } %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>

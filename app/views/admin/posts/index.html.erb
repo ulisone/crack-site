@@ -1,0 +1,25 @@
+<% content_for :title, "Admin - Posts" %>
+
+<div class="space-y-4">
+  <div class="flex items-center justify-between">
+    <h1 class="font-bold text-2xl">Posts</h1>
+    <%= link_to "New Post", new_admin_post_path, class: "rounded px-3.5 py-2.5 bg-blue-600 text-white" %>
+  </div>
+
+  <div class="divide-y">
+    <% @posts.each do |post| %>
+      <div class="py-3 flex items-center justify-between">
+        <div>
+          <div class="font-medium"><%= link_to(post.title.presence || "(no title)", [:admin, post]) %></div>
+          <div class="text-sm text-gray-500"><%= truncate(post.content.to_s, length: 100) %></div>
+        </div>
+        <div class="space-x-2">
+          <%= link_to "Edit", edit_admin_post_path(post), class: "text-blue-600" %>
+          <%= button_to "Delete", [:admin, post], method: :delete, class: "text-red-600", form: { data: { turbo_confirm: "Are you sure?" } } %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

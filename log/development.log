@@ -1,0 +1,531 @@
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY) /*application='CrackSite'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='CrackSite'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='CrackSite'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-08-08 01:48:24.799341', '2025-08-08 01:48:24.799344') RETURNING "key" /*application='CrackSite'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CrackSite'*/[0m
+Migrating to CreatePosts (20250808014822)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='CrackSite'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "posts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='CrackSite'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250808014822') RETURNING "version" /*application='CrackSite'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='CrackSite'*/[0m
+Migrating to CreateActiveStorageTables (20250808014823)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='CrackSite'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar, "created_at" datetime(6) NOT NULL) /*application='CrackSite'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key") /*application='CrackSite'*/[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+) /*application='CrackSite'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id") /*application='CrackSite'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id") /*application='CrackSite'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+) /*application='CrackSite'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest") /*application='CrackSite'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250808014823') RETURNING "version" /*application='CrackSite'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='CrackSite'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CrackSite'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='CrackSite'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CrackSite'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CrackSite'*/[0m
+Started GET "/" for 127.0.0.1 at 2025-08-08 10:55:42 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CrackSite'*/[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "posts" LIMIT 1 /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/index.html.erb:14
+  Rendered posts/index.html.erb within layouts/application (Duration: 17.2ms | GC: 9.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 26.2ms | GC: 10.4ms)
+Completed 200 OK in 152ms (Views: 33.3ms | ActiveRecord: 3.5ms (1 query, 0 cached) | GC: 10.4ms)
+
+
+Started GET "/assets/application-8b441ae0.css" for 127.0.0.1 at 2025-08-08 10:55:42 +0900
+Started GET "/assets/tailwind-e0c7e7b5.css" for 127.0.0.1 at 2025-08-08 10:55:42 +0900
+Started GET "/assets/application-c2c9afd9.js" for 127.0.0.1 at 2025-08-08 10:55:42 +0900
+Started GET "/assets/activestorage.esm-f2909226.js" for 127.0.0.1 at 2025-08-08 10:55:42 +0900
+Started GET "/apple-touch-icon-precomposed.png" for 127.0.0.1 at 2025-08-08 10:55:43 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/apple-touch-icon-precomposed.png"):
+  
+Started GET "/apple-touch-icon.png" for 127.0.0.1 at 2025-08-08 10:55:43 +0900
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-08-08 10:55:43 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/apple-touch-icon.png"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/posts/new" for 127.0.0.1 at 2025-08-08 10:55:46 +0900
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 23.1ms | GC: 0.5ms)
+  Rendered posts/new.html.erb within layouts/application (Duration: 25.1ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 27.1ms | GC: 0.5ms)
+Completed 200 OK in 67ms (Views: 28.2ms | ActiveRecord: 0.8ms (0 queries, 0 cached) | GC: 1.9ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2025-08-08 10:55:53 +0900
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "post" => {"title" => "", "content" => "", "attachments" => [""]}, "commit" => "Create Post"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 15.5ms | GC: 0.0ms)
+  Rendered posts/new.html.erb within layouts/application (Duration: 16.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.0ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 46ms (Views: 17.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-08 10:59:11 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CrackSite'*/[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "posts" LIMIT 1 /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/index.html.erb:14
+  Rendered posts/index.html.erb within layouts/application (Duration: 11.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 20.2ms | GC: 0.0ms)
+Completed 200 OK in 97ms (Views: 23.4ms | ActiveRecord: 2.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/assets/tailwind-4b43618e.css" for 127.0.0.1 at 2025-08-08 10:59:11 +0900
+Started GET "/posts/new" for 127.0.0.1 at 2025-08-08 10:59:14 +0900
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 18.1ms | GC: 0.0ms)
+  Rendered posts/new.html.erb within layouts/application (Duration: 22.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 24.0ms | GC: 0.0ms)
+Completed 200 OK in 66ms (Views: 24.4ms | ActiveRecord: 0.9ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/rails/active_storage/direct_uploads" for 127.0.0.1 at 2025-08-08 10:59:34 +0900
+Processing by ActiveStorage::DirectUploadsController#create as JSON
+  Parameters: {"blob" => {"filename" => "02.구간별일정공지_구조설계단계_v03_20230825.pptx", "content_type" => "application/vnd.openxmlformats-officedocument.presentationml.presentation", "byte_size" => 9497600, "checksum" => "eJ939f4YOO0XxTB1e6eFYQ=="}, "direct_upload" => {"blob" => {"filename" => "02.구간별일정공지_구조설계단계_v03_20230825.pptx", "content_type" => "application/vnd.openxmlformats-officedocument.presentationml.presentation", "byte_size" => 9497600, "checksum" => "eJ939f4YOO0XxTB1e6eFYQ=="}}}
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='CrackSite',controller='direct_uploads'*/[0m
+  [1m[36mActiveStorage::Blob Create (4.9ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ('9c26czdkf3d2v04p1v68vd91tml5', '02.구간별일정공지_구조설계단계_v03_20230825.pptx', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', NULL, 'local', 9497600, 'eJ939f4YOO0XxTB1e6eFYQ==', '2025-08-08 01:59:34.642540') RETURNING "id" /*action='create',application='CrackSite',controller='direct_uploads'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='CrackSite',controller='direct_uploads'*/[0m
+[36m  Disk Storage (8.5ms) [0m[34mGenerated URL for file at key: 9c26czdkf3d2v04p1v68vd91tml5 (http://127.0.0.1:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI5YzI2Y3pka2YzZDJ2MDRwMXY2OHZkOTF0bWw1IiwiY29udGVudF90eXBlIjoiYXBwbGljYXRpb24vdm5kLm9wZW54bWxmb3JtYXRzLW9mZmljZWRvY3VtZW50LnByZXNlbnRhdGlvbm1sLnByZXNlbnRhdGlvbiIsImNvbnRlbnRfbGVuZ3RoIjo5NDk3NjAwLCJjaGVja3N1bSI6ImVKOTM5ZjRZT08wWHhUQjFlNmVGWVE9PSIsInNlcnZpY2VfbmFtZSI6ImxvY2FsIn0sImV4cCI6IjIwMjUtMDgtMDhUMDI6MDQ6MzQuNjY2WiIsInB1ciI6ImJsb2JfdG9rZW4ifX0=--20f551b815f0d75b4f9a7b51f99ded13add7ca4a)[0m
+Completed 200 OK in 128ms (Views: 0.8ms | ActiveRecord: 10.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started PUT "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI5YzI2Y3pka2YzZDJ2MDRwMXY2OHZkOTF0bWw1IiwiY29udGVudF90eXBlIjoiYXBwbGljYXRpb24vdm5kLm9wZW54bWxmb3JtYXRzLW9mZmljZWRvY3VtZW50LnByZXNlbnRhdGlvbm1sLnByZXNlbnRhdGlvbiIsImNvbnRlbnRfbGVuZ3RoIjo5NDk3NjAwLCJjaGVja3N1bSI6ImVKOTM5ZjRZT08wWHhUQjFlNmVGWVE9PSIsInNlcnZpY2VfbmFtZSI6ImxvY2FsIn0sImV4cCI6IjIwMjUtMDgtMDhUMDI6MDQ6MzQuNjY2WiIsInB1ciI6ImJsb2JfdG9rZW4ifX0=--20f551b815f0d75b4f9a7b51f99ded13add7ca4a" for 127.0.0.1 at 2025-08-08 10:59:34 +0900
+Processing by ActiveStorage::DiskController#update as */*
+  Parameters: {"encoded_token" => "[FILTERED]"}
+[36m  Disk Storage (24.4ms) [0m[32mUploaded file to key: 9c26czdkf3d2v04p1v68vd91tml5 (checksum: eJ939f4YOO0XxTB1e6eFYQ==)[0m
+Completed 204 No Content in 45ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2025-08-08 10:59:34 +0900
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "post" => {"title" => "test post", "content" => "asdfasdfasdfasdfas", "attachments" => ["", "eyJfcmFpbHMiOnsiZGF0YSI6MSwicHVyIjoiYmxvYl9pZCJ9fQ==--8bed1a47b25a808e6a41576c6bd7cb3351114abc"]}, "commit" => "Create Post"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 1 LIMIT 1 /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:25:in 'PostsController#create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mPost Create (1.1ms)[0m  [1m[32mINSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES ('test post', 'asdfasdfasdfasdfas', '2025-08-08 01:59:34.873773', '2025-08-08 01:59:34.873773') RETURNING "id" /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "content_type" = 'application/x-ole-storage', "metadata" = '{"identified":true}' WHERE "active_storage_blobs"."id" = 1 /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 1 /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mActiveStorage::Attachment Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ('attachments', 'Post', 1, 1, '2025-08-08 01:59:34.915366') RETURNING "id" /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mPost Update (0.8ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = '2025-08-08 01:59:34.922801' WHERE "posts"."id" = 1 /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mActiveStorage::Blob Update (0.8ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = '{"identified":true,"analyzed":true}' WHERE "active_storage_blobs"."id" = 1 /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 1 /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = '2025-08-08 01:59:34.969040' WHERE "posts"."id" = 1 /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+Redirected to http://127.0.0.1:3000/posts/1
+Completed 302 Found in 232ms (ActiveRecord: 2.9ms (10 queries, 0 cached) | GC: 3.2ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2025-08-08 10:59:35 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:59:in 'PostsController#set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:10
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 1 LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered posts/_post.html.erb (Duration: 21.3ms | GC: 0.0ms)
+  Rendered posts/show.html.erb within layouts/application (Duration: 32.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 33.9ms | GC: 0.0ms)
+Completed 200 OK in 61ms (Views: 33.9ms | ActiveRecord: 0.8ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MSwicHVyIjoiYmxvYl9pZCJ9fQ==--8bed1a47b25a808e6a41576c6bd7cb3351114abc/02.%E1%84%80%E1%85%AE%E1%84%80%E1%85%A1%E1%86%AB%E1%84%87%E1%85%A7%E1%86%AF%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%B5_%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%E1%84%89%E1%85%A5%E1%86%AF%E1%84%80%E1%85%A8%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A8_v03_20230825.pptx?disposition=attachment" for 127.0.0.1 at 2025-08-08 10:59:40 +0900
+Processing by ActiveStorage::Blobs::RedirectController#show as */*
+  Parameters: {"disposition" => "attachment", "signed_id" => "eyJfcmFpbHMiOnsiZGF0YSI6MSwicHVyIjoiYmxvYl9pZCJ9fQ==--8bed1a47b25a808e6a41576c6bd7cb3351114abc", "filename" => "02.구간별일정공지_구조설계단계_v03_20230825"}
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 1 LIMIT 1 /*action='show',application='CrackSite',controller='redirect'*/[0m
+[36m  Disk Storage (1.7ms) [0m[34mGenerated URL for file at key: 9c26czdkf3d2v04p1v68vd91tml5 (http://127.0.0.1:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI5YzI2Y3pka2YzZDJ2MDRwMXY2OHZkOTF0bWw1IiwiZGlzcG9zaXRpb24iOiJhdHRhY2htZW50OyBmaWxlbmFtZT1cIjAyLiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRl8lM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0ZfdjAzXzIwMjMwODI1LnBwdHhcIjsgZmlsZW5hbWUqPVVURi04JycwMi4lRTElODQlODAlRTElODUlQUUlRTElODQlODAlRTElODUlQTElRTElODYlQUIlRTElODQlODclRTElODUlQTclRTElODYlQUYlRTElODQlOEIlRTElODUlQjUlRTElODYlQUYlRTElODQlOEMlRTElODUlQTUlRTElODYlQkMlRTElODQlODAlRTElODUlQTklRTElODYlQkMlRTElODQlOEMlRTElODUlQjVfJUUxJTg0JTgwJUUxJTg1JUFFJUUxJTg0JThDJUUxJTg1JUE5JUUxJTg0JTg5JUUxJTg1JUE1JUUxJTg2JUFGJUUxJTg0JTgwJUUxJTg1JUE4JUUxJTg0JTgzJUUxJTg1JUExJUUxJTg2JUFCJUUxJTg0JTgwJUUxJTg1JUE4X3YwM18yMDIzMDgyNS5wcHR4IiwiY29udGVudF90eXBlIjoiYXBwbGljYXRpb24veC1vbGUtc3RvcmFnZSIsInNlcnZpY2VfbmFtZSI6ImxvY2FsIn0sImV4cCI6IjIwMjUtMDgtMDhUMDI6MDQ6NDAuMTU2WiIsInB1ciI6ImJsb2Jfa2V5In19--e94f8fe28767f2f0b7c99a2b2bcc7514034814a5/02.%E1%84%80%E1%85%AE%E1%84%80%E1%85%A1%E1%86%AB%E1%84%87%E1%85%A7%E1%86%AF%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%B5_%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%E1%84%89%E1%85%A5%E1%86%AF%E1%84%80%E1%85%A8%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A8_v03_20230825.pptx)[0m
+Redirected to http://127.0.0.1:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI5YzI2Y3pka2YzZDJ2MDRwMXY2OHZkOTF0bWw1IiwiZGlzcG9zaXRpb24iOiJhdHRhY2htZW50OyBmaWxlbmFtZT1cIjAyLiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRl8lM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0ZfdjAzXzIwMjMwODI1LnBwdHhcIjsgZmlsZW5hbWUqPVVURi04JycwMi4lRTElODQlODAlRTElODUlQUUlRTElODQlODAlRTElODUlQTElRTElODYlQUIlRTElODQlODclRTElODUlQTclRTElODYlQUYlRTElODQlOEIlRTElODUlQjUlRTElODYlQUYlRTElODQlOEMlRTElODUlQTUlRTElODYlQkMlRTElODQlODAlRTElODUlQTklRTElODYlQkMlRTElODQlOEMlRTElODUlQjVfJUUxJTg0JTgwJUUxJTg1JUFFJUUxJTg0JThDJUUxJTg1JUE5JUUxJTg0JTg5JUUxJTg1JUE1JUUxJTg2JUFGJUUxJTg0JTgwJUUxJTg1JUE4JUUxJTg0JTgzJUUxJTg1JUExJUUxJTg2JUFCJUUxJTg0JTgwJUUxJTg1JUE4X3YwM18yMDIzMDgyNS5wcHR4IiwiY29udGVudF90eXBlIjoiYXBwbGljYXRpb24veC1vbGUtc3RvcmFnZSIsInNlcnZpY2VfbmFtZSI6ImxvY2FsIn0sImV4cCI6IjIwMjUtMDgtMDhUMDI6MDQ6NDAuMTU2WiIsInB1ciI6ImJsb2Jfa2V5In19--e94f8fe28767f2f0b7c99a2b2bcc7514034814a5/02.%E1%84%80%E1%85%AE%E1%84%80%E1%85%A1%E1%86%AB%E1%84%87%E1%85%A7%E1%86%AF%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%B5_%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%E1%84%89%E1%85%A5%E1%86%AF%E1%84%80%E1%85%A8%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A8_v03_20230825.pptx
+Completed 302 Found in 25ms (ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI5YzI2Y3pka2YzZDJ2MDRwMXY2OHZkOTF0bWw1IiwiZGlzcG9zaXRpb24iOiJhdHRhY2htZW50OyBmaWxlbmFtZT1cIjAyLiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRl8lM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0ZfdjAzXzIwMjMwODI1LnBwdHhcIjsgZmlsZW5hbWUqPVVURi04JycwMi4lRTElODQlODAlRTElODUlQUUlRTElODQlODAlRTElODUlQTElRTElODYlQUIlRTElODQlODclRTElODUlQTclRTElODYlQUYlRTElODQlOEIlRTElODUlQjUlRTElODYlQUYlRTElODQlOEMlRTElODUlQTUlRTElODYlQkMlRTElODQlODAlRTElODUlQTklRTElODYlQkMlRTElODQlOEMlRTElODUlQjVfJUUxJTg0JTgwJUUxJTg1JUFFJUUxJTg0JThDJUUxJTg1JUE5JUUxJTg0JTg5JUUxJTg1JUE1JUUxJTg2JUFGJUUxJTg0JTgwJUUxJTg1JUE4JUUxJTg0JTgzJUUxJTg1JUExJUUxJTg2JUFCJUUxJTg0JTgwJUUxJTg1JUE4X3YwM18yMDIzMDgyNS5wcHR4IiwiY29udGVudF90eXBlIjoiYXBwbGljYXRpb24veC1vbGUtc3RvcmFnZSIsInNlcnZpY2VfbmFtZSI6ImxvY2FsIn0sImV4cCI6IjIwMjUtMDgtMDhUMDI6MDQ6NDAuMTU2WiIsInB1ciI6ImJsb2Jfa2V5In19--e94f8fe28767f2f0b7c99a2b2bcc7514034814a5/02.%E1%84%80%E1%85%AE%E1%84%80%E1%85%A1%E1%86%AB%E1%84%87%E1%85%A7%E1%86%AF%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%B5_%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%E1%84%89%E1%85%A5%E1%86%AF%E1%84%80%E1%85%A8%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A8_v03_20230825.pptx" for 127.0.0.1 at 2025-08-08 10:59:40 +0900
+Processing by ActiveStorage::DiskController#show as */*
+  Parameters: {"encoded_key" => "[FILTERED]", "filename" => "02.구간별일정공지_구조설계단계_v03_20230825"}
+Completed 200 OK in 16ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2025-08-08 10:59:46 +0900
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "posts" LIMIT 1 /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/index.html.erb:14
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/index.html.erb:15
+  [1m[36mActiveStorage::Attachment Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' LIMIT 1 /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:10
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 1 LIMIT 1 /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered posts/_post.html.erb (Duration: 13.5ms | GC: 0.0ms)
+  Rendered posts/index.html.erb within layouts/application (Duration: 19.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 20.6ms | GC: 0.0ms)
+Completed 200 OK in 38ms (Views: 20.8ms | ActiveRecord: 0.2ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2025-08-08 10:59:58 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:59:in 'PostsController#set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:10
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 1 LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered posts/_post.html.erb (Duration: 9.8ms | GC: 0.0ms)
+  Rendered posts/show.html.erb within layouts/application (Duration: 13.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.7ms | GC: 0.0ms)
+Completed 200 OK in 43ms (Views: 13.9ms | ActiveRecord: 0.3ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2025-08-08 11:00:04 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:59:in 'PostsController#set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:10
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 1 LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered posts/_post.html.erb (Duration: 19.3ms | GC: 0.0ms)
+  Rendered posts/show.html.erb within layouts/application (Duration: 30.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 31.2ms | GC: 0.0ms)
+Completed 200 OK in 54ms (Views: 31.3ms | ActiveRecord: 0.3ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI5YzI2Y3pka2YzZDJ2MDRwMXY2OHZkOTF0bWw1IiwiZGlzcG9zaXRpb24iOiJhdHRhY2htZW50OyBmaWxlbmFtZT1cIjAyLiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRiUzRl8lM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0YlM0ZfdjAzXzIwMjMwODI1LnBwdHhcIjsgZmlsZW5hbWUqPVVURi04JycwMi4lRTElODQlODAlRTElODUlQUUlRTElODQlODAlRTElODUlQTElRTElODYlQUIlRTElODQlODclRTElODUlQTclRTElODYlQUYlRTElODQlOEIlRTElODUlQjUlRTElODYlQUYlRTElODQlOEMlRTElODUlQTUlRTElODYlQkMlRTElODQlODAlRTElODUlQTklRTElODYlQkMlRTElODQlOEMlRTElODUlQjVfJUUxJTg0JTgwJUUxJTg1JUFFJUUxJTg0JThDJUUxJTg1JUE5JUUxJTg0JTg5JUUxJTg1JUE1JUUxJTg2JUFGJUUxJTg0JTgwJUUxJTg1JUE4JUUxJTg0JTgzJUUxJTg1JUExJUUxJTg2JUFCJUUxJTg0JTgwJUUxJTg1JUE4X3YwM18yMDIzMDgyNS5wcHR4IiwiY29udGVudF90eXBlIjoiYXBwbGljYXRpb24veC1vbGUtc3RvcmFnZSIsInNlcnZpY2VfbmFtZSI6ImxvY2FsIn0sImV4cCI6IjIwMjUtMDgtMDhUMDI6MDQ6NDAuMTU2WiIsInB1ciI6ImJsb2Jfa2V5In19--e94f8fe28767f2f0b7c99a2b2bcc7514034814a5/02.%E1%84%80%E1%85%AE%E1%84%80%E1%85%A1%E1%86%AB%E1%84%87%E1%85%A7%E1%86%AF%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%B5_%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%E1%84%89%E1%85%A5%E1%86%AF%E1%84%80%E1%85%A8%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A8_v03_20230825.pptx" for 127.0.0.1 at 2025-08-08 11:00:07 +0900
+Processing by ActiveStorage::DiskController#show as */*
+  Parameters: {"encoded_key" => "[FILTERED]", "filename" => "02.구간별일정공지_구조설계단계_v03_20230825"}
+Completed 200 OK in 25ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/posts/1/remove_attachment?attachment_id=1" for 127.0.0.1 at 2025-08-08 11:00:11 +0900
+Processing by PostsController#remove_attachment as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "attachment_id" => "1", "id" => "1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1 /*action='remove_attachment',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:63:in 'PostsController#set_post_for_attachment'
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' AND "active_storage_attachments"."id" = 1 LIMIT 1 /*action='remove_attachment',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:51:in 'PostsController#remove_attachment'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='remove_attachment',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:52:in 'PostsController#remove_attachment'
+  [1m[36mActiveStorage::Attachment Destroy (0.9ms)[0m  [1m[31mDELETE FROM "active_storage_attachments" WHERE "active_storage_attachments"."id" = 1 /*action='remove_attachment',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:52:in 'PostsController#remove_attachment'
+  [1m[36mPost Update (0.0ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = '2025-08-08 02:00:11.419352' WHERE "posts"."id" = 1 /*action='remove_attachment',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:52:in 'PostsController#remove_attachment'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='remove_attachment',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:52:in 'PostsController#remove_attachment'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 1 LIMIT 1 /*action='remove_attachment',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:52:in 'PostsController#remove_attachment'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='remove_attachment',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:52:in 'PostsController#remove_attachment'
+  [1m[36mActiveStorage::Attachment Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 1 LIMIT 1 /*action='remove_attachment',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:52:in 'PostsController#remove_attachment'
+  [1m[36mActiveStorage::VariantRecord Load (0.3ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 1 /*action='remove_attachment',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:52:in 'PostsController#remove_attachment'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'ActiveStorage::Blob' AND "active_storage_attachments"."name" = 'preview_image' LIMIT 1 /*action='remove_attachment',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:52:in 'PostsController#remove_attachment'
+  [1m[36mActiveStorage::Blob Destroy (0.1ms)[0m  [1m[31mDELETE FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 1 /*action='remove_attachment',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:52:in 'PostsController#remove_attachment'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='remove_attachment',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:52:in 'PostsController#remove_attachment'
+[36m  Disk Storage (0.9ms) [0m[31mDeleted file from key: 9c26czdkf3d2v04p1v68vd91tml5[0m
+Redirected to http://127.0.0.1:3000/posts/1
+Completed 303 See Other in 85ms (ActiveRecord: 3.0ms (9 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2025-08-08 11:00:11 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:59:in 'PostsController#set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:10
+  Rendered posts/_post.html.erb (Duration: 3.2ms | GC: 0.0ms)
+  Rendered posts/show.html.erb within layouts/application (Duration: 10.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 11.9ms | ActiveRecord: 0.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at 2025-08-08 11:00:13 +0900
+Processing by PostsController#edit as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1 /*action='edit',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:59:in 'PostsController#set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 10.5ms | GC: 0.0ms)
+  Rendered posts/edit.html.erb within layouts/application (Duration: 11.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | GC: 0.0ms)
+Completed 200 OK in 46ms (Views: 13.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/rails/active_storage/direct_uploads" for 127.0.0.1 at 2025-08-08 11:00:42 +0900
+Processing by ActiveStorage::DirectUploadsController#create as JSON
+  Parameters: {"blob" => {"filename" => "(인사_007) 출장여비규정.pdf", "content_type" => "application/pdf", "byte_size" => 277425, "checksum" => "L4LudkWCInzUyeUA+8Fsdg=="}, "direct_upload" => {"blob" => {"filename" => "(인사_007) 출장여비규정.pdf", "content_type" => "application/pdf", "byte_size" => 277425, "checksum" => "L4LudkWCInzUyeUA+8Fsdg=="}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='CrackSite',controller='direct_uploads'*/[0m
+  [1m[36mActiveStorage::Blob Create (1.1ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ('z0ont6iijguxt2xe85d000qrr0rs', '(인사_007) 출장여비규정.pdf', 'application/pdf', NULL, 'local', 277425, 'L4LudkWCInzUyeUA+8Fsdg==', '2025-08-08 02:00:42.639654') RETURNING "id" /*action='create',application='CrackSite',controller='direct_uploads'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='CrackSite',controller='direct_uploads'*/[0m
+[36m  Disk Storage (1.0ms) [0m[34mGenerated URL for file at key: z0ont6iijguxt2xe85d000qrr0rs (http://127.0.0.1:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ6MG9udDZpaWpndXh0MnhlODVkMDAwcXJyMHJzIiwiY29udGVudF90eXBlIjoiYXBwbGljYXRpb24vcGRmIiwiY29udGVudF9sZW5ndGgiOjI3NzQyNSwiY2hlY2tzdW0iOiJMNEx1ZGtXQ0luelV5ZVVBKzhGc2RnPT0iLCJzZXJ2aWNlX25hbWUiOiJsb2NhbCJ9LCJleHAiOiIyMDI1LTA4LTA4VDAyOjA1OjQyLjY0OFoiLCJwdXIiOiJibG9iX3Rva2VuIn19--2468d8eb104d3bee8e5b0a5e52aa183546ddaf35)[0m
+Completed 200 OK in 46ms (Views: 1.0ms | ActiveRecord: 3.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started PUT "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ6MG9udDZpaWpndXh0MnhlODVkMDAwcXJyMHJzIiwiY29udGVudF90eXBlIjoiYXBwbGljYXRpb24vcGRmIiwiY29udGVudF9sZW5ndGgiOjI3NzQyNSwiY2hlY2tzdW0iOiJMNEx1ZGtXQ0luelV5ZVVBKzhGc2RnPT0iLCJzZXJ2aWNlX25hbWUiOiJsb2NhbCJ9LCJleHAiOiIyMDI1LTA4LTA4VDAyOjA1OjQyLjY0OFoiLCJwdXIiOiJibG9iX3Rva2VuIn19--2468d8eb104d3bee8e5b0a5e52aa183546ddaf35" for 127.0.0.1 at 2025-08-08 11:00:42 +0900
+Processing by ActiveStorage::DiskController#update as */*
+  Parameters: {"encoded_token" => "[FILTERED]"}
+[36m  Disk Storage (3.4ms) [0m[32mUploaded file to key: z0ont6iijguxt2xe85d000qrr0rs (checksum: L4LudkWCInzUyeUA+8Fsdg==)[0m
+Completed 204 No Content in 19ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started PATCH "/posts/1" for 127.0.0.1 at 2025-08-08 11:00:42 +0900
+Processing by PostsController#update as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "post" => {"title" => "test post", "content" => "asdfasdfasdfasdfas", "attachments" => ["", "eyJfcmFpbHMiOnsiZGF0YSI6MiwicHVyIjoiYmxvYl9pZCJ9fQ==--8ee042ef830570a2f514cfc582c2eb466abed31c"]}, "commit" => "Update Post", "id" => "1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1 /*action='update',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:59:in 'PostsController#set_post'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:36:in 'PostsController#update'
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 2 LIMIT 1 /*action='update',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:36:in 'PostsController#update'
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' /*action='update',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:36:in 'PostsController#update'
+  [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = '{"identified":true}' WHERE "active_storage_blobs"."id" = 2 /*action='update',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:36:in 'PostsController#update'
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 2 /*action='update',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:36:in 'PostsController#update'
+  [1m[36mActiveStorage::Attachment Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ('attachments', 'Post', 1, 2, '2025-08-08 02:00:42.741737') RETURNING "id" /*action='update',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:36:in 'PostsController#update'
+  [1m[36mPost Update (0.0ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = '2025-08-08 02:00:42.745673' WHERE "posts"."id" = 1 /*action='update',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:36:in 'PostsController#update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:36:in 'PostsController#update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:36:in 'PostsController#update'
+  [1m[36mActiveStorage::Blob Update (0.6ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = '{"identified":true,"analyzed":true}' WHERE "active_storage_blobs"."id" = 2 /*action='update',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:36:in 'PostsController#update'
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 2 /*action='update',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:36:in 'PostsController#update'
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 /*action='update',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:36:in 'PostsController#update'
+  [1m[36mPost Update (0.0ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = '2025-08-08 02:00:42.762063' WHERE "posts"."id" = 1 /*action='update',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:36:in 'PostsController#update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:36:in 'PostsController#update'
+Redirected to http://127.0.0.1:3000/posts/1
+Completed 303 See Other in 77ms (ActiveRecord: 1.7ms (11 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2025-08-08 11:00:42 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:59:in 'PostsController#set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:10
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 2 LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered posts/_post.html.erb (Duration: 7.4ms | GC: 0.0ms)
+  Rendered posts/show.html.erb within layouts/application (Duration: 8.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | GC: 0.0ms)
+Completed 200 OK in 25ms (Views: 9.1ms | ActiveRecord: 0.3ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MiwicHVyIjoiYmxvYl9pZCJ9fQ==--8ee042ef830570a2f514cfc582c2eb466abed31c/(%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A1_007)%20%E1%84%8E%E1%85%AE%E1%86%AF%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%A7%E1%84%87%E1%85%B5%E1%84%80%E1%85%B2%E1%84%8C%E1%85%A5%E1%86%BC.pdf?disposition=attachment" for 127.0.0.1 at 2025-08-08 11:00:45 +0900
+Processing by ActiveStorage::Blobs::RedirectController#show as PDF
+  Parameters: {"disposition" => "attachment", "signed_id" => "eyJfcmFpbHMiOnsiZGF0YSI6MiwicHVyIjoiYmxvYl9pZCJ9fQ==--8ee042ef830570a2f514cfc582c2eb466abed31c", "filename" => "(인사_007) 출장여비규정"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 2 LIMIT 1 /*action='show',application='CrackSite',controller='redirect'*/[0m
+[36m  Disk Storage (1.7ms) [0m[34mGenerated URL for file at key: z0ont6iijguxt2xe85d000qrr0rs (http://127.0.0.1:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ6MG9udDZpaWpndXh0MnhlODVkMDAwcXJyMHJzIiwiZGlzcG9zaXRpb24iOiJhdHRhY2htZW50OyBmaWxlbmFtZT1cIiUyOCUzRiUzRiUzRiUzRiUzRl8wMDclMjkgJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGLnBkZlwiOyBmaWxlbmFtZSo9VVRGLTgnJyUyOCVFMSU4NCU4QiVFMSU4NSVCNSVFMSU4NiVBQiVFMSU4NCU4OSVFMSU4NSVBMV8wMDclMjklMjAlRTElODQlOEUlRTElODUlQUUlRTElODYlQUYlRTElODQlOEMlRTElODUlQTElRTElODYlQkMlRTElODQlOEIlRTElODUlQTclRTElODQlODclRTElODUlQjUlRTElODQlODAlRTElODUlQjIlRTElODQlOEMlRTElODUlQTUlRTElODYlQkMucGRmIiwiY29udGVudF90eXBlIjoiYXBwbGljYXRpb24vcGRmIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0wOC0wOFQwMjowNTo0NS4zNTVaIiwicHVyIjoiYmxvYl9rZXkifX0=--a54e34bc85d1c9caa691ea153baa7b39e18816f8/(%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A1_007)%20%E1%84%8E%E1%85%AE%E1%86%AF%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%A7%E1%84%87%E1%85%B5%E1%84%80%E1%85%B2%E1%84%8C%E1%85%A5%E1%86%BC.pdf)[0m
+Redirected to http://127.0.0.1:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ6MG9udDZpaWpndXh0MnhlODVkMDAwcXJyMHJzIiwiZGlzcG9zaXRpb24iOiJhdHRhY2htZW50OyBmaWxlbmFtZT1cIiUyOCUzRiUzRiUzRiUzRiUzRl8wMDclMjkgJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGLnBkZlwiOyBmaWxlbmFtZSo9VVRGLTgnJyUyOCVFMSU4NCU4QiVFMSU4NSVCNSVFMSU4NiVBQiVFMSU4NCU4OSVFMSU4NSVBMV8wMDclMjklMjAlRTElODQlOEUlRTElODUlQUUlRTElODYlQUYlRTElODQlOEMlRTElODUlQTElRTElODYlQkMlRTElODQlOEIlRTElODUlQTclRTElODQlODclRTElODUlQjUlRTElODQlODAlRTElODUlQjIlRTElODQlOEMlRTElODUlQTUlRTElODYlQkMucGRmIiwiY29udGVudF90eXBlIjoiYXBwbGljYXRpb24vcGRmIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0wOC0wOFQwMjowNTo0NS4zNTVaIiwicHVyIjoiYmxvYl9rZXkifX0=--a54e34bc85d1c9caa691ea153baa7b39e18816f8/(%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A1_007)%20%E1%84%8E%E1%85%AE%E1%86%AF%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%A7%E1%84%87%E1%85%B5%E1%84%80%E1%85%B2%E1%84%8C%E1%85%A5%E1%86%BC.pdf
+Completed 302 Found in 29ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJ6MG9udDZpaWpndXh0MnhlODVkMDAwcXJyMHJzIiwiZGlzcG9zaXRpb24iOiJhdHRhY2htZW50OyBmaWxlbmFtZT1cIiUyOCUzRiUzRiUzRiUzRiUzRl8wMDclMjkgJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGJTNGLnBkZlwiOyBmaWxlbmFtZSo9VVRGLTgnJyUyOCVFMSU4NCU4QiVFMSU4NSVCNSVFMSU4NiVBQiVFMSU4NCU4OSVFMSU4NSVBMV8wMDclMjklMjAlRTElODQlOEUlRTElODUlQUUlRTElODYlQUYlRTElODQlOEMlRTElODUlQTElRTElODYlQkMlRTElODQlOEIlRTElODUlQTclRTElODQlODclRTElODUlQjUlRTElODQlODAlRTElODUlQjIlRTElODQlOEMlRTElODUlQTUlRTElODYlQkMucGRmIiwiY29udGVudF90eXBlIjoiYXBwbGljYXRpb24vcGRmIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0wOC0wOFQwMjowNTo0NS4zNTVaIiwicHVyIjoiYmxvYl9rZXkifX0=--a54e34bc85d1c9caa691ea153baa7b39e18816f8/(%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A1_007)%20%E1%84%8E%E1%85%AE%E1%86%AF%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%A7%E1%84%87%E1%85%B5%E1%84%80%E1%85%B2%E1%84%8C%E1%85%A5%E1%86%BC.pdf" for 127.0.0.1 at 2025-08-08 11:00:45 +0900
+Processing by ActiveStorage::DiskController#show as PDF
+  Parameters: {"encoded_key" => "[FILTERED]", "filename" => "(인사_007) 출장여비규정"}
+Completed 200 OK in 17ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2025-08-08 11:02:17 +0900
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "posts" LIMIT 1 /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/index.html.erb:14
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/index.html.erb:15
+  [1m[36mActiveStorage::Attachment Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' LIMIT 1 /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:10
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 2 LIMIT 1 /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered posts/_post.html.erb (Duration: 27.2ms | GC: 3.7ms)
+  Rendered posts/index.html.erb within layouts/application (Duration: 48.6ms | GC: 3.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 50.9ms | GC: 3.7ms)
+Completed 200 OK in 78ms (Views: 51.6ms | ActiveRecord: 0.7ms (5 queries, 0 cached) | GC: 3.7ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2025-08-08 11:02:20 +0900
+Processing by PostsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 18.0ms | GC: 2.9ms)
+  Rendered posts/new.html.erb within layouts/application (Duration: 18.8ms | GC: 2.9ms)
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | GC: 2.9ms)
+Completed 200 OK in 41ms (Views: 19.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 2.9ms)
+
+
+Started POST "/rails/active_storage/direct_uploads" for 127.0.0.1 at 2025-08-08 11:02:41 +0900
+Processing by ActiveStorage::DirectUploadsController#create as JSON
+  Parameters: {"blob" => {"filename" => "[kisia] sbom 도구 실증 결과보고서.pdf", "content_type" => "application/pdf", "byte_size" => 4940927, "checksum" => "85jpwabBpBErRNXFxDGxvQ=="}, "direct_upload" => {"blob" => {"filename" => "[kisia] sbom 도구 실증 결과보고서.pdf", "content_type" => "application/pdf", "byte_size" => 4940927, "checksum" => "85jpwabBpBErRNXFxDGxvQ=="}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='CrackSite',controller='direct_uploads'*/[0m
+  [1m[36mActiveStorage::Blob Create (1.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ('12x07iryj3egqf8i41lybcplt51e', '[kisia] sbom 도구 실증 결과보고서.pdf', 'application/pdf', NULL, 'local', 4940927, '85jpwabBpBErRNXFxDGxvQ==', '2025-08-08 02:02:41.388340') RETURNING "id" /*action='create',application='CrackSite',controller='direct_uploads'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='CrackSite',controller='direct_uploads'*/[0m
+[36m  Disk Storage (2.4ms) [0m[34mGenerated URL for file at key: 12x07iryj3egqf8i41lybcplt51e (http://127.0.0.1:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiIxMngwN2lyeWozZWdxZjhpNDFseWJjcGx0NTFlIiwiY29udGVudF90eXBlIjoiYXBwbGljYXRpb24vcGRmIiwiY29udGVudF9sZW5ndGgiOjQ5NDA5MjcsImNoZWNrc3VtIjoiODVqcHdhYkJwQkVyUk5YRnhER3h2UT09Iiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0wOC0wOFQwMjowNzo0MS4zOTdaIiwicHVyIjoiYmxvYl90b2tlbiJ9fQ==--14ce304b5ca41314d8709d3540dacca4d2a46e49)[0m
+Completed 200 OK in 47ms (Views: 4.0ms | ActiveRecord: 1.8ms (1 query, 0 cached) | GC: 2.1ms)
+
+
+Started PUT "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiIxMngwN2lyeWozZWdxZjhpNDFseWJjcGx0NTFlIiwiY29udGVudF90eXBlIjoiYXBwbGljYXRpb24vcGRmIiwiY29udGVudF9sZW5ndGgiOjQ5NDA5MjcsImNoZWNrc3VtIjoiODVqcHdhYkJwQkVyUk5YRnhER3h2UT09Iiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNS0wOC0wOFQwMjowNzo0MS4zOTdaIiwicHVyIjoiYmxvYl90b2tlbiJ9fQ==--14ce304b5ca41314d8709d3540dacca4d2a46e49" for 127.0.0.1 at 2025-08-08 11:02:41 +0900
+Processing by ActiveStorage::DiskController#update as */*
+  Parameters: {"encoded_token" => "[FILTERED]"}
+[36m  Disk Storage (13.3ms) [0m[32mUploaded file to key: 12x07iryj3egqf8i41lybcplt51e (checksum: 85jpwabBpBErRNXFxDGxvQ==)[0m
+Completed 204 No Content in 30ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2025-08-08 11:02:41 +0900
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "post" => {"title" => "두번째 글..", "content" => "이글은 어떻게 보일까??", "attachments" => ["", "eyJfcmFpbHMiOnsiZGF0YSI6MywicHVyIjoiYmxvYl9pZCJ9fQ==--5163c8aa8361f0e202d476287274c718bb9630fb"]}, "commit" => "Create Post"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 3 LIMIT 1 /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:25:in 'PostsController#create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES ('두번째 글..', '이글은 어떻게 보일까??', '2025-08-08 02:02:41.490049', '2025-08-08 02:02:41.490049') RETURNING "id" /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = '{"identified":true}' WHERE "active_storage_blobs"."id" = 3 /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 3 /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mActiveStorage::Attachment Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ('attachments', 'Post', 2, 3, '2025-08-08 02:02:41.508932') RETURNING "id" /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = '2025-08-08 02:02:41.510760' WHERE "posts"."id" = 2 /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mActiveStorage::Blob Update (1.9ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = '{"identified":true,"analyzed":true}' WHERE "active_storage_blobs"."id" = 3 /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 3 /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mPost Update (0.0ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = '2025-08-08 02:02:41.523534' WHERE "posts"."id" = 2 /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:27:in 'PostsController#create'
+Redirected to http://127.0.0.1:3000/posts/2
+Completed 302 Found in 69ms (ActiveRecord: 3.0ms (10 queries, 0 cached) | GC: 3.3ms)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2025-08-08 11:02:41 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id" => "2"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 2 LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/controllers/posts_controller.rb:59:in 'PostsController#set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 2 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:10
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 2 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 3 LIMIT 1 /*action='show',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered posts/_post.html.erb (Duration: 11.3ms | GC: 0.9ms)
+  Rendered posts/show.html.erb within layouts/application (Duration: 16.2ms | GC: 0.9ms)
+  Rendered layout layouts/application.html.erb (Duration: 23.0ms | GC: 0.9ms)
+Completed 200 OK in 40ms (Views: 23.1ms | ActiveRecord: 0.3ms (4 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2025-08-08 11:02:44 +0900
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "posts" LIMIT 1 /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/index.html.erb:14
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/index.html.erb:15
+  [1m[36mActiveStorage::Attachment Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' LIMIT 1 /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:10
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 2 LIMIT 1 /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered posts/_post.html.erb (Duration: 8.1ms | GC: 1.7ms)
+  [1m[36mActiveStorage::Attachment Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 2 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' LIMIT 1 /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:10
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 2 AND "active_storage_attachments"."record_type" = 'Post' AND "active_storage_attachments"."name" = 'attachments' /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 3 LIMIT 1 /*action='index',application='CrackSite',controller='posts'*/[0m
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered posts/_post.html.erb (Duration: 2.7ms | GC: 0.0ms)
+  Rendered posts/index.html.erb within layouts/application (Duration: 13.2ms | GC: 1.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | GC: 2.6ms)
+Completed 200 OK in 43ms (Views: 14.6ms | ActiveRecord: 0.4ms (8 queries, 0 cached) | GC: 2.6ms)
+
+
