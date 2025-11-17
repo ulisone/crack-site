@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   resources :posts do
     delete :remove_attachment, on: :member
   end
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :posts
+    resources :categories
     root to: "dashboard#index"
   end
 end

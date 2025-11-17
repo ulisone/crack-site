@@ -1,0 +1,30 @@
+<%= form_with(model: category, class: "space-y-5") do |form| %>
+  <% if category.errors.any? %>
+    <div class="rounded-md border border-red-300 bg-red-50 p-4 dark:border-red-500/60 dark:bg-red-900/20">
+      <p class="font-semibold text-red-700 dark:text-red-300">
+        <%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:
+      </p>
+      <ul class="mt-2 list-disc pl-5 text-sm text-red-600 dark:text-red-200">
+        <% category.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, class: "block text-sm font-medium text-gray-700 dark:text-gray-200" %>
+    <%= form.text_field :name, class: "mt-1 w-full rounded-md border-gray-300 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 shadow-sm focus:border-blue-500 focus:ring-blue-500" %>
+  </div>
+
+  <div>
+    <%= form.label :description, class: "block text-sm font-medium text-gray-700 dark:text-gray-200" %>
+    <%= form.text_area :description, rows: 4, class: "mt-1 w-full rounded-md border-gray-300 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 shadow-sm focus:border-blue-500 focus:ring-blue-500" %>
+  </div>
+
+  <div class="flex items-center justify-end space-x-3">
+    <%= link_to "Cancel", category.persisted? ? category : categories_path, class: "rounded-md border border-gray-300 dark:border-slate-600 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-slate-800" %>
+    <%= form.submit class: "rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-500" %>
+  </div>
+<% end %>
+

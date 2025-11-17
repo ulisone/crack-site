@@ -8,6 +8,10 @@
       <div class="text-sm text-gray-500">Total Posts</div>
       <div class="text-2xl font-semibold"><%= @posts_count %></div>
     </div>
+    <div class="p-4 rounded border">
+      <div class="text-sm text-gray-500">Total Categories</div>
+      <div class="text-2xl font-semibold"><%= Category.count %></div>
+    </div>
   </div>
 
   <div>
@@ -22,8 +26,9 @@
     </ul>
   </div>
 
-  <div class="mt-4">
+  <div class="mt-4 space-x-4">
     <%= link_to "Manage Posts", admin_posts_path, class: "inline-block rounded px-3.5 py-2.5 bg-blue-600 text-white" %>
+    <%= link_to "Manage Categories", admin_categories_path, class: "inline-block rounded px-3.5 py-2.5 bg-green-600 text-white" %>
   </div>
 </div>
 

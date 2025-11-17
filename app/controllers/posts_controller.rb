@@ -4,7 +4,13 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all
+    @categories = Category.all
+    if params[:category_id].present?
+      @category = Category.find(params[:category_id])
+      @posts = @category.posts.includes(:category)
+    else
+      @posts = Post.includes(:category).all
+    end
   end
 
   # GET /posts/1
@@ -14,10 +20,12 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @categories = Category.all
   end
 
   # GET /posts/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST /posts
@@ -65,6 +73,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.expect(post: [ :title, :content, { attachments: [] } ])
+      params.expect(post: [ :title, :content, :category_id, :featured_image, { attachments: [] } ])
     end
 end

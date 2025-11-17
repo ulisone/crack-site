@@ -1,0 +1,51 @@
+<% content_for :title, @category.name %>
+
+<div class="w-full space-y-6">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 dark:bg-green-900/30 mb-5 text-green-700 dark:text-green-300 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="rounded-2xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 shadow-sm space-y-4">
+    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div>
+        <p class="text-sm uppercase tracking-wide text-gray-400 dark:text-gray-500">Category</p>
+        <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100"><%= @category.name %></h1>
+        <% if @category.description.present? %>
+          <p class="mt-2 text-gray-600 dark:text-gray-300"><%= @category.description %></p>
+        <% end %>
+      </div>
+      <div class="flex flex-wrap gap-2 text-sm">
+        <%= link_to "All categories", categories_path, class: "rounded-md border border-gray-200 dark:border-slate-600 px-3 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800" %>
+        <%= link_to "Edit", edit_category_path(@category), class: "rounded-md border border-gray-200 dark:border-slate-600 px-3 py-1.5 hover:bg-gray-50 dark:hover:bg-slate-800" %>
+        <%= button_to "Delete", category_path(@category), method: :delete, data: { turbo_confirm: "Delete #{@category.name}?" }, class: "rounded-md border border-red-200 dark:border-red-500/50 px-3 py-1.5 text-red-600 dark:text-red-300 hover:bg-red-50 dark:hover:bg-red-900/20" %>
+      </div>
+    </div>
+    <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+      <span class="inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-900/30 px-3 py-1 text-blue-700 dark:text-blue-300 font-medium">
+        <%= pluralize(@posts.size, "post") %>
+      </span>
+      <span>Last updated <%= time_ago_in_words(@category.updated_at) %> ago</span>
+    </div>
+  </div>
+
+  <div class="space-y-4">
+    <div class="flex items-center justify-between">
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">Posts in this category</h2>
+      <%= link_to "New post", new_post_path(category_id: @category.id), class: "rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white hover:bg-blue-500" %>
+    </div>
+
+    <% if @posts.any? %>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <% @posts.each do |post| %>
+          <%= render post %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="rounded-xl border border-dashed border-gray-300 dark:border-slate-700 p-10 text-center text-gray-500 dark:text-gray-400">
+        <p class="text-lg font-medium">There are no posts in this category yet.</p>
+        <p class="mt-2">Create a new post and assign it to this category to get started.</p>
+        <%= link_to "Create a post", new_post_path(category_id: @category.id), class: "mt-4 inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-white font-semibold shadow-sm hover:bg-blue-500" %>
+      </div>
+    <% end %>
+  </div>
+</div>

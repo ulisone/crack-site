@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+/* Dark mode styles */
+.dark {
+  color-scheme: dark;
+}
+
+.dark .bg-white { background-color: #0f172a !important; }
+.dark .text-slate-900 { color: #f1f5f9 !important; }
+.dark .bg-white\/80 { background-color: rgba(15, 23, 42, 0.8) !important; }
+.dark .border-gray-200\/80 { border-color: rgba(51, 65, 85, 0.8) !important; }
+.dark .hover\:text-blue-600:hover { color: #60a5fa !important; }
+.dark .bg-white { background-color: #1e293b !important; }
+.dark .border-gray-300 { border-color: #475569 !important; }
+.dark .hover\:bg-gray-50:hover { background-color: #334155 !important; }
+.dark body { color: #f8fafc !important; }
+.dark .text-gray-900,
+.dark .text-gray-800 { color: #f1f5f9 !important; }

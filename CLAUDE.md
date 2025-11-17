@@ -38,19 +38,26 @@ app/
 
 ## Models
 - **Post**: 제목 검증, 다중 첨부파일 지원 (has_many_attached :attachments)
+  - Featured Image 지원 (has_one_attached :featured_image)
+  - 첫 번째 첨부 이미지를 자동으로 featured_image로 설정
+- **Category**: 게시글 분류, 이름 유니크 검증
 
 ## Routes
-- 루트: `posts#index`
+- 루트: `posts#index` (카테고리 필터링 지원)
 - Posts CRUD: `/posts`
 - 첨부파일 삭제: `DELETE /posts/:id/remove_attachment`
-- 관리자: `/admin/posts`, `/admin` (dashboard)
+- Categories: `/categories` (목록, 상세)
+- 관리자: `/admin/posts`, `/admin/categories`, `/admin` (dashboard)
 - 헬스체크: `/up`
 
 ## Development Notes
 - Rails 8의 새로운 기능 사용 (Solid 시리즈)
 - Active Storage로 파일 업로드 처리
+- Image Processing gem으로 이미지 최적화 및 리사이징
+- Featured Image 자동 설정 로직
+- 카테고리별 게시글 분류 및 필터링
 - 관리자와 일반 사용자 인터페이스 분리
-- Tailwind CSS로 스타일링
+- Tailwind CSS로 반응형 카드 레이아웃 스타일링
 - Docker 컨테이너 배포 준비 (Kamal)
 
 ## Common Commands
